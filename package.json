@@ -1,0 +1,17 @@
+{
+  "name": "hackfest-site",
+  "version": "1.0.0",
+  "description": "Hackfest '26 official website - National level hackathon portal",
+  "main": "site/index.html",
+  "scripts": {
+    "start": "serve site",
+    "dev": "serve site",
+    "serve": "serve site"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  },
+  "keywords": ["hackfest", "hackathon", "website"],
+  "author": "Finite Loop Club",
+  "license": "ISC"
+}

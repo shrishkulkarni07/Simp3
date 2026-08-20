@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Side Quests & Events | Hackfest '26</title>
+  <meta name="description" content="Explore Hackfest'26 Side Quests — CTF challenges, treasure hunt and tech banter. Exciting additional events at NMAMIT, Nitte (April 17–19)." />
+  <meta name="author" content="Finite Loop Club" />
+
+  <!-- OG -->
+  <meta property="og:title" content="Hackfest '26 Side Quests | CTF, Treasure Hunt & Tech Banter" />
+  <meta property="og:description" content="Explore Hackfest'26 Side Quests — CTF challenges, treasure hunt and tech banter. Exciting additional events at NMAMIT, Nitte." />
+  <meta property="og:url" content="https://hackfest.dev/events" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/logos/hflogowithbg.webp" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon-96x96.png" type="image/png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .events-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: url('assets/images/backgrounds/shipwreck.jpeg') no-repeat center center / cover;
+      z-index: -1;
+      filter: brightness(0.4);
+    }
+    .events-wrap {
+      padding-top: 8rem;
+      padding-bottom: 5rem;
+      max-width: 72rem;
+      margin: 0 auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    @media (min-width: 640px) {
+      .events-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .events-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .event-card {
+      background: rgba(15, 24, 35, 0.85);
+      border: 1px solid #39577c;
+      border-radius: 1rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .event-card:hover {
+      border-color: var(--cyan-400);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(6,182,212,0.25);
+    }
+    .event-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(57,87,124,0.5);
+    }
+    .event-tag {
+      font-family: var(--font-pirate);
+      font-size: 0.875rem;
+      letter-spacing: 0.15em;
+      color: var(--cyan-300);
+      text-transform: uppercase;
+    }
+    .event-name {
+      font-family: var(--font-pirate);
+      font-size: 2rem;
+      color: #fff;
+      margin-top: 0.25rem;
+    }
+    .event-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .event-desc {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .event-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(57,87,124,0.3);
+      padding-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--amber-300);
+      font-family: var(--font-sans);
+    }
+  </style>
+</head>
+<body>
+
+<div class="events-bg"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div style="position:absolute;inset:0;background:radial-gradient(circle at center,#1c1917,#0a0a0a 60%,#000);opacity:0.8;"></div>
+  <div id="loader-inner">
+    <img id="loader-logo" src="assets/images/logos/hf-logo-banner.png" alt="Hackfest Logo" width="600" height="200" />
+  </div>
+  <div id="loader-bottom-right">
+    <div id="loader-progress-wrap">
+      <span id="loader-progress" class="fc">0%</span><br/>
+      <span id="loader-label">Loading Assets</span>
+    </div>
+    <img id="loader-steering" src="assets/images/backgrounds/steering.png" alt="Loading…" />
+  </div>
+</div>
+
+<!-- COMPASS BUTTON -->
+<a id="compass-btn" href="login.html" aria-label="Open Compass">
+  <div class="compass-inner">
+    <svg class="compass-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/>
+      <circle cx="12" cy="12" r="10"/>
+    </svg>
+    <span class="compass-label fp">Compass</span>
+  </div>
+</a>
+
+<!-- NAVBAR -->
+<div id="navbar">
+  <div id="navbar-bg"></div>
+  <div id="navbar-border-outer"></div>
+  <div id="navbar-border-dashed"></div>
+  <div id="navbar-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="assets/images/logos/logo-glow.jpeg" alt="Hackfest Logo" />
+    </a>
+    <nav id="nav-links" aria-label="Main navigation">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link active" href="events.html">Events</a>
+      <a class="nav-link" href="timeline.html">Timeline</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="login.html">
+        <button class="nav-btn" type="button">
+          <div class="nav-btn-bg"></div>
+          <span>Event Login</span>
+        </button>
+      </a>
+    </div>
+    <button id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+  <div id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a class="mobile-nav-link" href="index.html">Home</a>
+    <a class="mobile-nav-link" href="about.html">About</a>
+    <a class="mobile-nav-link active" href="events.html">Events</a>
+    <a class="mobile-nav-link" href="timeline.html">Timeline</a>
+    <a class="mobile-nav-link" href="contact.html">Contact</a>
+    <a class="mobile-nav-link" href="login.html">Event Login</a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="page-main">
+  <div class="events-wrap">
+    <div style="text-align:center;">
+      <h1 class="section-heading-cyan fp" style="font-size:4rem;">Side Quests</h1>
+      <p class="fc" style="font-size:1.25rem;color:rgba(165,243,252,0.7);margin-top:0.5rem;">Extra challenges, puzzles, and conquests along the voyage</p>
+    </div>
+
+    <div class="events-grid">
+      <!-- Quest 1: CTF -->
+      <div class="event-card fade-up">
+        <div class="event-header">
+          <span class="event-tag">Cyber Security</span>
+          <h2 class="event-name">Capture The Flag</h2>
+        </div>
+        <div class="event-body">
+          <p class="event-desc">Put your cybersecurity and reverse engineering skills to the ultimate test. Uncover hidden vulnerabilities, crack cryptographic puzzles, and capture elusive flags.</p>
+          <div class="event-meta">
+            <span>⚔️ Solo / Duo</span>
+            <span>💰 Exclusive Prizes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quest 2: Treasure Hunt -->
+      <div class="event-card fade-up">
+        <div class="event-header">
+          <span class="event-tag">Adventure & Logic</span>
+          <h2 class="event-name">Treasure Hunt</h2>
+        </div>
+        <div class="event-body">
+          <p class="event-desc">Decrypt ancient ciphers, follow cryptic clues scattered across campus, and race against time to claim the pirate chest before rival crews.</p>
+          <div class="event-meta">
+            <span>🗺️ Team of 3-4</span>
+            <span>⏳ Timed Hunt</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quest 3: Tech Banter -->
+      <div class="event-card fade-up">
+        <div class="event-header">
+          <span class="event-tag">Debate & Wit</span>
+          <h2 class="event-name">Tech Banter</h2>
+        </div>
+        <div class="event-body">
+          <p class="event-desc">A high-energy debate arena where developers battle with logic, humor, and witty arguments over hot tech topics, frameworks, and coding controversies.</p>
+          <div class="event-meta">
+            <span>🎤 Open Mic</span>
+            <span>🏆 Best Speaker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer id="site-footer">
+  <div class="footer-coral"><div class="footer-coral-img"></div></div>
+  <div class="footer-main">
+    <div class="footer-glow"></div>
+    <div class="footer-content">
+      <div class="footer-logos">
+        <div class="footer-logo-row">
+          <a class="footer-logo-link" href="index.html"><img src="assets/images/logos/logo-footer.jpeg" alt="Hackfest" width="95" height="50" /></a>
+          <a class="footer-logo-link" href="https://finiteloop.club/" target="_blank" rel="noopener"><img src="assets/images/logos/flc_logo.png" alt="Finite Loop Club" width="75" height="50" /></a>
+        </div>
+        <a class="footer-logo-link" href="https://nitte.edu.in/nmamit/" target="_blank" rel="noopener"><img class="footer-nmamit-img" src="assets/images/logos/nmamit-text.png" alt="NMAMIT" width="180" height="100" /></a>
+        <div class="footer-social">
+          <p>Connect with us:</p>
+          <ul class="footer-social-links" role="list">
+            <li><a class="footer-social-link" href="https://www.instagram.com/hackfest.dev" target="_blank" rel="noopener"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a></li>
+            <li><a class="footer-social-link" href="mailto:hackfest@finiteloop.club"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-map-col">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;">
+          <div class="footer-map-wrap">
+            <iframe title="NMAMIT Location Map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15538.662520521424!2d74.93399100000002!3d13.18347!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbb56415ad85e5b%3A0x10b77ac6f6afc7fa!2sNitte%20Mahalinga%20Adyantaya%20Memorial%20Institute%20of%20Technology%20-%20NMAMIT!5e0!3m2!1sen!2sin!4v1771872967031!5m2!1sen!2sin" width="250" height="180" style="border:0;" loading="lazy" allowfullscreen></iframe>
+          </div>
+          <div class="footer-address">
+            <p>NMAM Institute of Technology, Nitte</p>
+            <p>Karkala, Udupi District, Karnataka</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy"><p>2026 © Hackfest | All rights reserved</p></div>
+  </div>
+</footer>
+
+<script src="assets/js/ocean-canvas.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
