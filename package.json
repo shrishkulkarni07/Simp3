@@ -5,7 +5,7 @@
   "main": "site/index.html",
   "scripts": {
     "start": "serve site",
-    "dev": "serve site",
+    "dev": "serve site -l 3000",
     "serve": "serve site"
   },
   "dependencies": {

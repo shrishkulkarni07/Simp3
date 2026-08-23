@@ -333,11 +333,11 @@
   gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
     -1, -1,
-     1, -1,
-    -1,  1,
-    -1,  1,
-     1, -1,
-     1,  1,
+    1, -1,
+    -1, 1,
+    -1, 1,
+    1, -1,
+    1, 1,
   ]), gl.STATIC_DRAW);
 
   const aPositionLoc = gl.getAttribLocation(program, 'aPosition');
@@ -382,9 +382,8 @@
     return tex;
   }
 
-  // Relative image paths suitable for both site/ and root/
-  const isSiteSubdir = window.location.pathname.includes('/site/');
-  const basePath = isSiteSubdir ? 'assets/images/backgrounds/' : 'hackfest.dev/images/';
+  // Images live in assets/images/backgrounds/ relative to the server root
+  const basePath = 'assets/images/backgrounds/';
 
   let morningRes = [1920, 1080];
   let nightRes = [1920, 1080];
