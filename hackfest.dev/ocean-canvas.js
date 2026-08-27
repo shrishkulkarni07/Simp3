@@ -256,18 +256,18 @@
           tex2.rgb = mix(tex2.rgb, tex2.rgb * nightTint * 1.6, uIsNight * 0.75);
         }
 
-        float depth = smoothstep(0.85, 0.0, uv.y);
+        float depth = smoothstep(0.0, 1.0, uv.y);
         finalColor = tex2;
         finalColor.rgb *= 1.0 - (depth * 0.25);
       } else {
-        // In Transition - Wavy water surface line
-        float level = mix(-0.1, 1.7, progress);
+        // In Transition - Wavy water surface line rising from footer to header
+        float level = mix(1.1, -0.1, progress);
         float wave = sin(uv.x * 12.0 + uTime * 2.5) * 0.025;
         wave += sin(uv.x * 28.0 - uTime * 4.0) * 0.012;
         wave += noise(vec2(uv.x * 6.0, uTime * 0.8)) * 0.02;
 
         float surfaceY = level + wave;
-        float mixVal = smoothstep(surfaceY + 0.015, surfaceY - 0.015, uv.y);
+        float mixVal = smoothstep(surfaceY - 0.015, surfaceY + 0.015, uv.y);
 
         // Water surface refraction distortion
         float distortStrength = smoothstep(0.12, 0.0, abs(uv.y - surfaceY)) * 0.04;
@@ -293,7 +293,7 @@
         finalColor.rgb += crestColor * crest * 0.5;
 
         // Bottom depth darkness
-        float depth = smoothstep(0.85, 0.0, uv.y);
+        float depth = smoothstep(0.0, 1.0, uv.y);
         float darkStrength = smoothstep(0.7, 1.0, progress);
         finalColor.rgb *= 1.0 - (depth * 0.25 * darkStrength);
       }
@@ -390,7 +390,7 @@
   let nightRes = [1920, 1080];
   let underwaterRes = [1920, 1080];
 
-  loadTexture(gl, basePath + 'morningnew3.jpg', 0, (w, h) => { morningRes = [w, h]; });
+  loadTexture(gl, basePath + 'morningnew3.png', 0, (w, h) => { morningRes = [w, h]; });
   loadTexture(gl, basePath + 'night.jpg', 1, (w, h) => { nightRes = [w, h]; });
   loadTexture(gl, basePath + 'underwater.jpg', 2, (w, h) => { underwaterRes = [w, h]; });
 
@@ -445,7 +445,7 @@
     if (!ctx) return;
 
     const imgMorning = new Image();
-    imgMorning.src = basePath + 'morningnew3.jpg';
+    imgMorning.src = basePath + 'morningnew3.png';
     const imgNight = new Image();
     imgNight.src = basePath + 'night.jpg';
 
